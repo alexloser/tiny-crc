@@ -36,11 +36,11 @@ See test.c and test.cpp for more details.
 
 # Performance
 Test a string with 80 characters length on intel-corei5 CPU for 10,000,000 invokes:  
-* CRC32 : 2seconds  
-* CRC64 : 2seconds  
-* Boost-CRC32 : 2seconds  
-* Boost-CRC64 : 2seconds  
-* Boost-CRC32-C : 2seconds  
+* CRC32 : 2.21 seconds  
+* CRC64 : 2.14 seconds  
+* Boost-CRC32 : 2.47 seconds  
+* Boost-CRC64 : 2.19 seconds  
+* Boost-CRC32-C : 2.46 seconds  
 
 
 

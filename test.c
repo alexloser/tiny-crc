@@ -16,7 +16,7 @@ int main(int argc, char **argv)
     uint32_t c32 = crc32(str, len);
     printf("CRC32: hex 0x%08X  dec %u\n", c32, c32);
 
-    time_t t = time(0);
+    time_t t = clock();
     printf("Invoke 10,000,000 times: ");
     fflush(stdout);
 
@@ -26,12 +26,12 @@ int main(int argc, char **argv)
             break;
         }
     }
-    printf("%ldseconds\n\n", time(0) - t);
+    printf("%.2f seconds\n\n", (clock() - t)/(double)CLOCKS_PER_SEC);
 
     uint64_t c64 = crc64(str, len);
     printf("CRC64: hex 0x%16lX  dec %zu\n", c64, c64);
 
-    t = time(0);
+    t = clock();
     printf("Invoke 10,000,000 times: ");
     fflush(stdout);
 
@@ -41,7 +41,7 @@ int main(int argc, char **argv)
             break;
         }
     }
-    printf("%ldseconds\n\n", time(0) - t);
+    printf("%.2f seconds\n\n", (clock() - t)/(double)CLOCKS_PER_SEC);
 
     return 0;
 }

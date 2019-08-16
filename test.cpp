@@ -16,7 +16,7 @@ int main(int argc, char **argv)
 
     uint32_t c32 = 0;
     uint64_t c64 = 0;
-    time_t t = time(0);
+    time_t t = clock();
 
 #ifndef USE_BOOST_LIB
     c32 = crc32(str.data(), str.size());
@@ -29,9 +29,9 @@ int main(int argc, char **argv)
             break;
         }
     }
-    printf("%ldseconds\n\n", time(0) - t);
+    printf("%.2f seconds\n\n", (clock() - t)/(double)CLOCKS_PER_SEC);
 
-    t = time(0);
+    t = clock();
     c64 = crc64(str.data(), str.size());
     printf("CRC64: hex 0x%16lX  dec %zu\n", c64, c64);
     printf("Invoke 10,000,000 times: ");
@@ -42,13 +42,14 @@ int main(int argc, char **argv)
             break;
         }
     }
-    printf("%ldseconds\n\n", time(0) - t);
+    printf("%.2f seconds\n\n", (clock() - t)/(double)CLOCKS_PER_SEC);
 #endif
+
 
 #ifdef USE_BOOST_LIB
     const uint32_t answer32C = (0xFDB2E7B8);
 
-    t = time(0);
+    t = clock();
     c32 = boost_crc32(str.data(), str.size());
     printf("CRC32-boost: hex 0x%08X  dec %u\n", c32, c32);
     printf("Invoke 10,000,000 times: ");
@@ -59,9 +60,9 @@ int main(int argc, char **argv)
             break;
         }
     }
-    printf("%ldseconds\n\n", time(0) - t);
+    printf("%.2f seconds\n\n", (clock() - t)/(double)CLOCKS_PER_SEC);
 
-    t = time(0);
+    t = clock();
     c32 = boost_crc32c(str.data(), str.size());
     printf("CRC32-C-boost: hex 0x%08X  dec %u\n", c32, c32);
     printf("Invoke 10,000,000 times: ");
@@ -72,9 +73,9 @@ int main(int argc, char **argv)
             break;
         }
     }
-    printf("%ldseconds\n\n", time(0) - t);
+    printf("%.2f seconds\n\n", (clock() - t)/(double)CLOCKS_PER_SEC);
 
-    t = time(0);
+    t = clock();
     c64 = boost_crc64(str.data(), str.size());
     printf("CRC64-boost: hex 0x%16lX  dec %zu\n", c64, c64);
     printf("Invoke 10,000,000 times: ");
@@ -85,7 +86,7 @@ int main(int argc, char **argv)
             break;
         }
     }
-    printf("%ldseconds\n\n", time(0) - t);
+    printf("%.2f seconds\n\n", (clock() - t)/(double)CLOCKS_PER_SEC);
 #endif
 
     return 0;
