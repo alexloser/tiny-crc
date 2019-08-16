@@ -1,15 +1,18 @@
 // Don't use this file in user's source, it's internal details and Don't change anything!
 #include <stdint.h>
-#ifdef  __cplusplus
+#ifdef  __GNUC__
+#ifdef __cplusplus
 #define CRCTB_ALIGN alignas(32)
 #else
 #define CRCTB_ALIGN __attribute__((aligned(32))) const
+#endif
+#else
+#define CRCTB_ALIGN
 #endif
 
 #ifdef  __cplusplus
 namespace tinycrc {
 #endif
-
 
 //////////////////////////////////////////////////////////////////////////////
 // CRC-64-jones constants table

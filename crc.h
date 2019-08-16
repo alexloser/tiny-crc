@@ -22,8 +22,8 @@ namespace tinycrc {
 extern const uint32_t __crc32_table[256];
 extern const uint64_t __crc64_table[256];
 #else
-extern const uint32_t __crc32_table[];
-extern const uint64_t __crc64_table[];
+extern const uint32_t __crc32_table[256];
+extern const uint64_t __crc64_table[256];
 #endif
 
 /**
